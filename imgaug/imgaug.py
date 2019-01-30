@@ -3035,10 +3035,16 @@ class BoundingBox(object):
         else:
             return fully
 
-    # TODO rename to clip_*()
-    def cut_out_of_image(self, image):
+    def cut_out_of_image(self, *args, **kwargs):
+        import warnings
+        warnings.warn(DeprecationWarning("BoundingBox.cut_out_of_image() is deprecated. Use "
+                                         "BoundingBox.clip_out_of_image() instead. It has the exactly same "
+                                         "interface (simple renaming)."))
+        return self.clip_out_of_image(*args, **kwargs)
+
+    def clip_out_of_image(self, image):
         """
-        Cut off all parts of the bounding box that are outside of the image.
+        Clip off all parts of the bounding box that are outside of the image.
 
         Parameters
         ----------
@@ -3579,8 +3585,15 @@ class BoundingBoxesOnImage(object):
         return BoundingBoxesOnImage(bbs_clean, shape=self.shape)
 
     def cut_out_of_image(self):
+        import warnings
+        warnings.warn(DeprecationWarning("BoundingBoxesOnImage.cut_out_of_image() is deprecated. Use "
+                                         "BoundingBoxesOnImage.clip_out_of_image() instead. It has the exactly same "
+                                         "interface (simple renaming)."))
+        return self.clip_out_of_image()
+
+    def clip_out_of_image(self):
         """
-        Cut off all parts from all bounding boxes that are outside of the image.
+        Clip off all parts from all bounding boxes that are outside of the image.
 
         Returns
         -------
@@ -3588,7 +3601,7 @@ class BoundingBoxesOnImage(object):
             Bounding boxes, clipped to fall within the image dimensions.
 
         """
-        bbs_cut = [bb.cut_out_of_image(self.shape)
+        bbs_cut = [bb.clip_out_of_image(self.shape)
                    for bb in self.bounding_boxes if bb.is_partly_within_image(self.shape)]
         return BoundingBoxesOnImage(bbs_cut, shape=self.shape)
 
@@ -3949,9 +3962,10 @@ class Polygon(object):
         else:
             return fully
 
-    # TODO mark as deprecated
-    # TODO rename cut_* to clip_* in BoundingBox
     def cut_out_of_image(self, image):
+        import warnings
+        warnings.warn(DeprecationWarning("Polygon.cut_out_of_image() is deprecated. Use Polygon.clip_out_of_image() "
+                                         "instead. It has the exactly same interface (simple renaming)."))
         return self.clip_out_of_image(image)
 
     def clip_out_of_image(self, image):
