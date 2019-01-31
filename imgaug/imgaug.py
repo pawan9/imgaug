@@ -3036,10 +3036,9 @@ class BoundingBox(object):
             return fully
 
     def cut_out_of_image(self, *args, **kwargs):
-        import warnings
         warnings.warn(DeprecationWarning("BoundingBox.cut_out_of_image() is deprecated. Use "
-                                         "BoundingBox.clip_out_of_image() instead. It has the exactly same "
-                                         "interface (simple renaming)."))
+                                         "BoundingBox.clip_out_of_image() instead. It has the "
+                                         "exactly same interface (simple renaming)."))
         return self.clip_out_of_image(*args, **kwargs)
 
     def clip_out_of_image(self, image):
@@ -3585,10 +3584,9 @@ class BoundingBoxesOnImage(object):
         return BoundingBoxesOnImage(bbs_clean, shape=self.shape)
 
     def cut_out_of_image(self):
-        import warnings
-        warnings.warn(DeprecationWarning("BoundingBoxesOnImage.cut_out_of_image() is deprecated. Use "
-                                         "BoundingBoxesOnImage.clip_out_of_image() instead. It has the exactly same "
-                                         "interface (simple renaming)."))
+        warnings.warn(DeprecationWarning("BoundingBoxesOnImage.cut_out_of_image() is deprecated."
+                                         "Use BoundingBoxesOnImage.clip_out_of_image() instead. It "
+                                         "has the exactly same interface (simple renaming)."))
         return self.clip_out_of_image()
 
     def clip_out_of_image(self):
@@ -3963,9 +3961,9 @@ class Polygon(object):
             return fully
 
     def cut_out_of_image(self, image):
-        import warnings
-        warnings.warn(DeprecationWarning("Polygon.cut_out_of_image() is deprecated. Use Polygon.clip_out_of_image() "
-                                         "instead. It has the exactly same interface (simple renaming)."))
+        warnings.warn(DeprecationWarning("Polygon.cut_out_of_image() is deprecated. Use "
+                                         "Polygon.clip_out_of_image() instead. It has the exactly "
+                                         "same interface (simple renaming)."))
         return self.clip_out_of_image(image)
 
     def clip_out_of_image(self, image):
@@ -4967,9 +4965,10 @@ class HeatmapsOnImage(object):
                                          max_value=self.max_value)
 
     def scale(self, *args, **kwargs):
-        import warnings
-        warnings.warn(DeprecationWarning("HeatmapsOnImage.scale() is deprecated. Use HeatmapsOnImage.resize() instead. "
-                                         "It has the exactly same interface (simple renaming)."))
+        warnings.warn(DeprecationWarning("HeatmapsOnImage.scale() is deprecated. "
+                                         "Use HeatmapsOnImage.resize() instead. "
+                                         "It has the exactly same interface "
+                                         "(simple renaming)."))
         return self.resize(*args, **kwargs)
 
     def resize(self, sizes, interpolation="cubic"):
@@ -5584,7 +5583,6 @@ class SegmentationMapOnImage(object):
             return segmap
 
     def scale(self, *args, **kwargs):
-        import warnings
         warnings.warn(DeprecationWarning("SegmentationMapOnImage.scale() is deprecated. "
                                          "Use SegmentationMapOnImage.resize() instead. "
                                          "It has the exactly same interface (simple renaming)."))
